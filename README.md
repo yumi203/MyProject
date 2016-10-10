@@ -6,17 +6,19 @@
 - FTPManager 可配合崩溃日志上传至FTP
 
 //判断网络环境
+```
 NetworkStatus netstatus = [[Reachability reachabilityForInternetConnection] currentReachabilityStatus];
 if (netstatus == ReachableViaWiFi) {
-NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
-if ([user boolForKey:@"crash"]) {
-[user setBool:NO forKey:@"crash"];
-dispatch_queue_t defQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
-dispatch_async(defQueue, ^{
-self.ftpmanager = [[FTPManager alloc] initWithServer:@"FTP地址" user:@"用户名" password:@"密码" directory:@"存储路径，可多级，自动创建目录，自动创建1级目录下ini文件，第一次过后可根据修改ini文件设置下次是否再次上传"];
-});
+    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];     
+    if ([user boolForKey:@"crash"]) {
+        [user setBool:NO forKey:@"crash"];
+        dispatch_queue_t defQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
+        dispatch_async(defQueue, ^{
+        self.ftpmanager = [[FTPManager alloc] initWithServer:@"FTP地址" user:@"用户名" password:@"密码" directory:@"存储路径，可多级，自动创建目录，自动创建1级目录下ini文件，第一次过后可根据修改ini文件设置下次是否再次上传"];
+        });
+    }
 }
-}
+```
 - tradeView
 简单的实现了交易密码框
 可由代码和xib两种方式创建
