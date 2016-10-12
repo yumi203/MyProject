@@ -25,3 +25,4 @@ if (netstatus == ReachableViaWiFi) {
 - 常用的Category的整理--UIView的Category中有个人封装的tapGuesture的Block
 - 封装带des加密的网络请求
 - 选择菜单以及弹出文字
+- 模仿网易大乐透走势图动画
