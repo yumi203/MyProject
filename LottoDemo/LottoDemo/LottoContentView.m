@@ -130,21 +130,40 @@
 - (void)createSubViews {
     NSInteger index = 0;
     for (NSString *periods in self.periodsArray) {
-
-        //文字的label
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0,index * kItemWidth, kLeftViewWidth, kItemWidth)];
-        [self addSubview:label];
-        label.text = [NSString stringWithFormat:@"%@期", periods];
-        label.textColor = [UIColor grayColor];
-        label.font = [UIFont systemFontOfSize:14];
-        label.textAlignment = NSTextAlignmentCenter;
-        label.backgroundColor = index % 2 == 0 ? [UIColor greenColor] : [UIColor yellowColor];
+        //使用CALayer的创建方式相同内容速度是58.982968 ms 内存占用4M
+//        CATextLayer * textLayer = [CATextLayer layer];
+//        NSString * text = [NSString stringWithFormat:@"%@期", periods];
+//        NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:text];
+//        
+//        NSMutableParagraphStyle *para = [[NSMutableParagraphStyle alloc] init];
+//        para.alignment = NSTextAlignmentCenter;
+//        
+//        NSDictionary *attributeDict = @{NSFontAttributeName : [UIFont systemFontOfSize:14], NSForegroundColorAttributeName: [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:1], NSParagraphStyleAttributeName : para};
+//        [attrStr setAttributes:attributeDict range:NSMakeRange(0, attrStr.length)];
+//        textLayer.string = attrStr;
+//        
+//        //图层的大小(宽度固定根据文字定高度)
+//        CGRect strRect = [attrStr boundingRectWithSize:CGSizeMake(kItemWidth, kItemWidth) options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading) context:nil];
+//        textLayer.bounds = CGRectMake(0, 0, strRect.size.width, strRect.size.height + 5);//文本大小,默认是0
+//        textLayer.alignmentMode = @"center";//文字对齐方式
+//        textLayer.contentsScale = [UIScreen mainScreen].scale;//清晰度
+//        textLayer.position = CGPointMake(0,index * kItemWidth);//位置
+//        [self.layer addSublayer:textLayer];
+//        普通控件创建方式相同内容速度是用时50.136983 ms内存占用4.7M
+                //文字的label
+                UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0,index * kItemWidth, kLeftViewWidth, kItemWidth)];
+                [self addSubview:label];
+                label.text = [NSString stringWithFormat:@"%@期", periods];
+                label.textColor = [UIColor grayColor];
+                label.font = [UIFont systemFontOfSize:14];
+                label.textAlignment = NSTextAlignmentCenter;
+                label.backgroundColor = index % 2 == 0 ? [UIColor greenColor] : [UIColor yellowColor];
         
-        //竖着的线
-        UIView *line = [[UIView alloc] initWithFrame:CGRectMake(kLeftViewWidth - 1, index * kItemWidth, 1, kItemWidth)];
-        [self addSubview:line];
-        line.backgroundColor = [UIColor grayColor];
-
+                //竖着的线
+                UIView *line = [[UIView alloc] initWithFrame:CGRectMake(kLeftViewWidth - 1, index * kItemWidth, 1, kItemWidth)];
+                [self addSubview:line];
+                line.backgroundColor = [UIColor grayColor];
+        
         index++;
     }
 }
