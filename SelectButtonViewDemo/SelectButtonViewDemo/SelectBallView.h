@@ -17,6 +17,5 @@
 @property (nonatomic, assign) CGFloat ballWidth;
 //是否可以点击
 @property (nonatomic, assign) BOOL canClick;
-//球的背景颜色根据number的百位来判断如101中的100代表红色，200代表蓝色
 
 @end
