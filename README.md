@@ -26,3 +26,4 @@ if (netstatus == ReachableViaWiFi) {
 - 封装带des加密的网络请求
 - 选择菜单以及弹出文字
 - 模仿网易大乐透走势图动画,LottoDemo为普通控件创建实现动画，LottoDemo2为纯绘制实现效果，速度为普通实现方式的25倍，LottoDemo实现速度为54-60毫秒,纯绘制实现速度为2毫秒左右
+- SelectButtonView是纯绘制模拟实现网易彩票  按钮数字，放大文字的功能
