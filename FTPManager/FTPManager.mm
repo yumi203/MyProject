@@ -52,7 +52,7 @@ enum {
         self.ftpPassword = password;
         self.ftpDirectory = [NSString stringWithFormat:@"%@/iOS", directory];
         CMana = [[CManager alloc] init];
-        [self createRemoteDirectory:directory];
+        [self createRemoteDirectory:self.ftpDirectory];
 
     }
     return self;
