@@ -29,3 +29,4 @@ if (netstatus == ReachableViaWiFi) {
 - SelectButtonView是纯绘制模拟实现网易彩票  按钮数字，放大文字的功能
 - WebCache基于YYDisCache和NSURLProtocol实现UIWebView离线缓存
 - YMCrashUpLoadFTP为崩溃日志以及自动上传FTP功能封装的一个SDK
+- MyImagePicker是基于AssetsLibrary框架模仿微信的相册多选功能
