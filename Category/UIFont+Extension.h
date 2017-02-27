@@ -13,4 +13,5 @@
  *  打印并显示所有字体
  */
 +(void)showAllFonts;
+
 @end

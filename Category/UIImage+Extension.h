@@ -64,31 +64,83 @@ typedef enum {
  */
 + (UIImage *)resizedImageWithName:(NSString *)name left:(CGFloat)left top:(CGFloat)top;
 
-//由颜色生成图片
+/**
+ *  @author 俞明, 16-10-26 09:10:30
+ *
+ *  由颜色生成图片
+ *
+ */
 + (UIImage *) imageWithColor:(UIColor*)color;
 
-//图片旋转角度
+/**
+ *  @author 俞明, 16-10-26 09:10:20
+ *
+ *  图片旋转角度
+ *
+ */
 - (UIImage *) imageRotatedByDegrees:(CGFloat)degrees;
 
-//拉伸图片UIEdgeInsets
+/**
+ *  @author 俞明, 16-10-26 09:10:11
+ *
+ *  拉伸图片UIEdgeInsets
+ */
 - (UIImage *) resizableImage:(UIEdgeInsets)insets;
 
-//拉伸图片CGFloat
+/**
+ *  @author 俞明, 16-10-26 09:10:02
+ *
+ *  拉伸图片CGFloat
+ */
 - (UIImage *) imageByResizeToScale:(CGFloat)scale;
 
-//放大图片CGSize
+/**
+ *  @author 俞明, 16-10-26 09:10:33
+ *
+ *  放大图片CGSize
+ */
 - (UIImage *) imageByResizeWithMaxSize:(CGSize)size;
 
-//小样图图片CGSize
+/**
+ *  @author 俞明, 16-10-26 09:10:54
+ *
+ *  小样图图片CGSize
+ *
+ *  @param size 大小
+ *
+ */
 - (UIImage *) imageWithThumbnailForSize:(CGSize)size;
 
-//通过Rect剪裁图片
+/**
+ *  @author 俞明, 16-10-26 09:10:25
+ *
+ *  通过Rect剪裁图片
+ *
+ *  @param rect 矩形
+ *
+ */
 - (UIImage *) imageByCropToRect:(CGRect)rect;
 
-//图片增加圆角
+/**
+ *  @author 俞明, 16-10-26 09:10:12
+ *
+ *  图片增加圆角
+ *
+ *  @param radius 圆角
+ *
+ */
 - (UIImage *) imageByRoundCornerRadius:(CGFloat)radius;
 
-//图片增加圆角及边框
+/**
+ *  @author 俞明, 16-10-26 09:10:32
+ *
+ *  图片增加圆角及边框
+ *
+ *  @param radius      圆角
+ *  @param borderWidth 宽度
+ *  @param borderColor 颜色
+ *
+ */
 - (UIImage *) imageByRoundCornerRadius:(CGFloat)radius
                            borderWidth:(CGFloat)borderWidth
                            borderColor:(UIColor *)borderColor;

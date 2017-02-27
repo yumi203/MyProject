@@ -127,4 +127,22 @@ static  NSCalendar *calendar_;
     
     return components;
 }
+/**
+ *  将date转换成字符串(将有/无时差的date转换成字符串)
+ */
+- (NSString *)timeStringFormatString:(NSString *)formatString
+                      timeDifference:(BOOL)difference{
+    //实例化时间格式化工具
+    NSDateFormatter *format = [[NSDateFormatter alloc] init];
+    //定义格式
+    [format setDateFormat:formatString];
+    if (difference) //有时差
+        return [format stringFromDate:self];
+    //无时差
+    NSTimeZone *zone = [NSTimeZone systemTimeZone];
+    NSInteger fromInterval = [zone secondsFromGMTForDate:self];
+    NSDate *toDate = [self dateByAddingTimeInterval:-(fromInterval)];
+    return [format stringFromDate:toDate];
+    
+}
 @end

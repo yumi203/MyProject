@@ -23,6 +23,13 @@
     return self;
 }
 
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    NSArray *propertyList = [[self class] propertyList];
+    for (NSString *propertyName in propertyList) {
+        [aCoder encodeObject:[self valueForKey:propertyName] forKey:propertyName];
+    }
+}
+
 + (NSArray *)propertyList {
     
     NSMutableArray *array = [NSMutableArray array];
@@ -36,12 +43,7 @@
     return [array copy];
 }
 
-- (void)encodeWithCoder:(NSCoder *)aCoder {
-    NSArray *propertyList = [[self class] propertyList];
-    for (NSString *propertyName in propertyList) {
-        [aCoder encodeObject:[self valueForKey:propertyName] forKey:propertyName];
-    }
-}
+
 
 /**
  *  @brief  异步执行代码块

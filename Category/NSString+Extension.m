@@ -169,83 +169,86 @@
 
 
 - (BOOL)checkNumber {
-    NSString *nicknameRegex = @"^[0-9]*$";
-    NSPredicate *passWordPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",nicknameRegex];
-    return [passWordPredicate evaluateWithObject:self];
+    NSString *numberRegex = @"^[0-9]*$";
+    NSPredicate *numberPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",numberRegex];
+    return [numberPredicate evaluateWithObject:self];
 }
 
 //正则判断手机号码格式
 
 - (BOOL)checkPhone {
-    /**
-     * 手机号码
-     * 移动：134[0-8],135,136,137,138,139,150,151,157,158,159,182,187,188
-     * 联通：130,131,132,152,155,156,185,186
-     * 电信：133,1349,153,180,189
-     */
-    NSString * MOBILE = @"^1(3[0-9]|5[0-35-9]|8[0235-9])\\d{8}$";
-    /**
-     10         * 中国移动：China Mobile
-     11         * 134[0-8],135,136,137,138,139,150,151,157,158,159,182,187,188
-     12         */
-    NSString * CM = @"^1(34[0-8]|(3[5-9]|5[017-9]|8[278])\\d)\\d{7}$";
-    /**
-     15         * 中国联通：China Unicom
-     16         * 130,131,132,152,155,156,185,186
-     17         */
-    NSString * CU = @"^1(3[0-2]|5[256]|8[56])\\d{8}$";
-    /**
-     20         * 中国电信：China Telecom
-     21         * 133,1349,153,180,189
-     22         */
-    NSString * CT = @"^1((33|53|8[09])[0-9]|349)\\d{7}$";
-    /**
-     25         * 大陆地区固话及小灵通
-     26         * 区号：010,020,021,022,023,024,025,027,028,029
-     27         * 号码：七位或八位
-     28         */
-    // NSString * PHS = @"^0(10|2[0-5789]|\\d{3})\\d{7,8}$";
-    
-    NSPredicate *regextestmobile = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", MOBILE];
-    NSPredicate *regextestcm = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", CM];
-    NSPredicate *regextestcu = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", CU];
-    NSPredicate *regextestct = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", CT];
-    
-    if (([regextestmobile evaluateWithObject:self] == YES)
-        || ([regextestcm evaluateWithObject:self] == YES)
-        || ([regextestct evaluateWithObject:self] == YES)
-        || ([regextestcu evaluateWithObject:self] == YES))
-    {
-        if([regextestcm evaluateWithObject:self] == YES) {
-            NSLog(@"China Mobile");
-        } else if([regextestct evaluateWithObject:self] == YES) {
-            NSLog(@"China Telecom");
-        } else if ([regextestcu evaluateWithObject:self] == YES) {
-            NSLog(@"China Unicom");
-        } else {
-            NSLog(@"Unknow");
-        }
-        
-        return YES;
-    }
-    else
-    {
-        return NO;
-    }
+//    /**
+//     * 手机号码
+//     * 移动：134[0-8],135,136,137,138,139,150,151,157,158,159,182,187,188
+//     * 联通：130,131,132,152,155,156,185,186
+//     * 电信：133,1349,153,180,189
+//     */
+//    NSString * MOBILE = @"^1(3[0-9]|5[0-35-9]|8[0235-9])\\d{8}$";
+//    /**
+//     10         * 中国移动：China Mobile
+//     11         * 134[0-8],135,136,137,138,139,150,151,157,158,159,182,187,188
+//     12         */
+//    NSString * CM = @"^1(34[0-8]|(3[5-9]|5[017-9]|8[278])\\d)\\d{7}$";
+//    /**
+//     15         * 中国联通：China Unicom
+//     16         * 130,131,132,152,155,156,185,186
+//     17         */
+//    NSString * CU = @"^1(3[0-2]|5[256]|8[56])\\d{8}$";
+//    /**
+//     20         * 中国电信：China Telecom
+//     21         * 133,1349,153,180,189
+//     22         */
+//    NSString * CT = @"^1((33|53|8[09])[0-9]|349)\\d{7}$";
+//    /**
+//     25         * 大陆地区固话及小灵通
+//     26         * 区号：010,020,021,022,023,024,025,027,028,029
+//     27         * 号码：七位或八位
+//     28         */
+//    // NSString * PHS = @"^0(10|2[0-5789]|\\d{3})\\d{7,8}$";
+//    
+//    NSPredicate *regextestmobile = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", MOBILE];
+//    NSPredicate *regextestcm = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", CM];
+//    NSPredicate *regextestcu = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", CU];
+//    NSPredicate *regextestct = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", CT];
+//    
+//    if (([regextestmobile evaluateWithObject:self] == YES)
+//        || ([regextestcm evaluateWithObject:self] == YES)
+//        || ([regextestct evaluateWithObject:self] == YES)
+//        || ([regextestcu evaluateWithObject:self] == YES))
+//    {
+//        if([regextestcm evaluateWithObject:self] == YES) {
+//            NSLog(@"China Mobile");
+//        } else if([regextestct evaluateWithObject:self] == YES) {
+//            NSLog(@"China Telecom");
+//        } else if ([regextestcu evaluateWithObject:self] == YES) {
+//            NSLog(@"China Unicom");
+//        } else {
+//            NSLog(@"Unknow");
+//        }
+//        
+//        return YES;
+//    }
+//    else
+//    {
+//        return NO;
+//    }
+    NSString *phoneRegex = @"^1\\d{10}$";
+    NSPredicate *phonePredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", phoneRegex];
+    return [phonePredicate evaluateWithObject:self];
 }
 
 
 - (BOOL)checkRealName {
     NSString *nicknameRegex = @"^[\u4e00-\u9fa5]{2,4}$";
-    NSPredicate *passWordPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",nicknameRegex];
-    return [passWordPredicate evaluateWithObject:self];
+    NSPredicate *nicknamePredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",nicknameRegex];
+    return [nicknamePredicate evaluateWithObject:self];
 }
 
 //昵称
 - (BOOL)checkNickname {
     NSString *nicknameRegex = @"^[\u4e00-\u9fa5\\w]{4,20}$";
-    NSPredicate *passWordPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",nicknameRegex];
-    return [passWordPredicate evaluateWithObject:self];
+    NSPredicate *nicknamePredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",nicknameRegex];
+    return [nicknamePredicate evaluateWithObject:self];
     
 }
 
@@ -254,39 +257,39 @@
     if (self.length <= 0)
         return NO;
     
-    NSString *regex2 = @"^(\\d{14}|\\d{17})(\\d|[xX])$";
-    NSPredicate *identityCardPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",regex2];
+    NSString *identityCardRegex = @"^(\\d{14}|\\d{17})(\\d|[xX])$";
+    NSPredicate *identityCardPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",identityCardRegex];
     return [identityCardPredicate evaluateWithObject:self];
 }
 
 //邮箱
 - (BOOL)checkEmail {
     NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
-    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
-    return [emailTest evaluateWithObject:self];
+    NSPredicate *emailPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+    return [emailPredicate evaluateWithObject:self];
 
 }
 
 //邮编
 - (BOOL)checkPostcode{
-    NSString *postcode = @"^[1-9]\\d{5}$";
-    NSPredicate *postcodePredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",postcode];
+    NSString *postcodeRegex = @"^[1-9]\\d{5}$";
+    NSPredicate *postcodePredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",postcodeRegex];
     return [postcodePredicate evaluateWithObject:self];
+}
+//验证钱
+- (BOOL)checkMoney {
+    NSString *moenyRegex = @"^[1-9]\\d{5}$";
+    NSPredicate *moenyPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",moenyRegex];
+    return [moenyPredicate evaluateWithObject:self];
 }
 
 //验证密码是否是6-20位必须包含数字以及字母
 - (BOOL)checkPassword {
-    NSString *passwordRegex1 = @"^([a-zA-Z]+[0-9]+[a-zA-Z0-9]+)|([a-zA-Z]+[0-9]+)$";
-    NSString *passwordRegex2 = @"^([0-9]+[a-zA-Z]+[a-zA-Z0-9]+)|([0-9]+[a-zA-Z]+)$";
-    NSPredicate *passWordPredicate1 = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",passwordRegex1];
-    NSPredicate *passWordPredicate2 = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",passwordRegex2];
-    if ([passWordPredicate1 evaluateWithObject:self] && self.length >= 6 && self.length <= 20) {
-        return YES;
-    }else if([passWordPredicate2 evaluateWithObject:self] && self.length >= 6 && self.length <= 20) {
-        return YES;
-    }
-    return NO;
+    NSString *passwordRegex = @"^([a-zA-Z0-9]){6,20}$";
+    NSPredicate *passwordPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",passwordRegex];
+    return [passwordPredicate evaluateWithObject:self];
 }
+
 
 /** 删除所有的空格 */
 -(NSString *)deleteSpace{
@@ -298,38 +301,7 @@
     return [strM copy];
 }
 
-/*
- *  时间戳对应的NSDate
- */
--(NSDate *)date{
-    
-    NSTimeInterval timeInterval=self.floatValue;
-    
-    return [NSDate dateWithTimeIntervalSince1970:timeInterval];
-}
 
-/**
- *  时间戳转格式化的时间字符串
- */
--(NSString *)timestampToTimeStringWithFormatString:(NSString *)formatString{
-    //时间戳转date
-    NSDate *date=[NSDate dateWithTimeIntervalSince1970:[self integerValue]];
-    
-    return [self timeStringFromDate:date formatString:formatString];
-}
-
--(NSString *)timeStringFromDate:(NSDate *)date formatString:(NSString *)formatString{
-    //实例化时间格式化工具
-    NSDateFormatter *formatter=[[NSDateFormatter alloc] init];
-    
-    //定义格式
-    formatter.dateFormat=formatString;
-    
-    //时间转化为字符串
-    NSString *dateString = [formatter stringFromDate:date];
-    
-    return dateString;
-}
 
 /**
  *  32位MD5加密
@@ -458,5 +430,139 @@ void ProviderReleaseData (void *info, const void *data, size_t size){
     return resultUIImage;
 }
 
+//转换时区
++ (NSInteger)zoneFromDate:(NSDate *)date {
+    NSTimeZone *zone = [NSTimeZone systemTimeZone];
+    return [zone secondsFromGMTForDate:date];
+}
+
+/*
+ *  时间戳对应的NSDate
+ */
+- (NSDate *)dateFromInterval{
+    NSTimeInterval timeInterval = [self integerValue];
+    return [NSDate dateWithTimeIntervalSince1970:timeInterval];
+}
+
+/**
+ *  根据格式返回当前的时间字符串
+ */
+- (NSString *)formatNowTime {
+    return [[self class] timeStringFromDate:[NSDate date] formatString:self timeDifference:YES];
+}
+
+/**
+ *  将date转换成字符串(将有/无时差的date转换成字符串)
+ */
++ (NSString *)timeStringFromDate:(NSDate *)date
+                    formatString:(NSString *)formatString
+                  timeDifference:(BOOL)difference{
+    //实例化时间格式化工具
+    NSDateFormatter *format = [[NSDateFormatter alloc] init];
+    //定义格式
+    [format setDateFormat:formatString];
+    if (difference) //有时差
+        return [format stringFromDate:date];
+    //无时差
+    NSInteger fromInterval = [self zoneFromDate:date];
+    NSDate *toDate = [date dateByAddingTimeInterval:-(fromInterval)];
+    return [format stringFromDate:toDate];
+    
+}
+/**
+ *  时间戳转格式化的时间字符串(有/无时间差)
+ */
+- (NSString *)timestampToTimeStringWithFormatString:(NSString *)formatString
+                                     timeDifference:(BOOL)difference{
+    //时间戳转date
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:[self integerValue]];
+    return [[self class] timeStringFromDate:date formatString:formatString timeDifference:difference];
+}
+
+
+
+
+/**
+ *  距离时间戳中的时间经过了或者还剩多少天
+ */
+- (NSInteger)dayFromTimestamp {
+    NSDate *fromDate = self.dateFromInterval;
+    //取得当前时间的date
+    NSDate *nowDate = [NSDate date];
+    //进行日期比较
+    NSCalendar *gregorian = [[NSCalendar alloc]initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSUInteger unitFlags = NSCalendarUnitDay;//返回的类型，只返回天
+    NSDateComponents *components = [gregorian components:unitFlags fromDate:fromDate toDate:nowDate options:NSCalendarWrapComponents];
+    return [components day];
+}
+/**
+ *  不指定格式的时间字符串转换成(无时差)NSDate
+ */
+- (NSDate *)dateFromString {
+    NSString *fromatString = nil;
+    //如果有时间
+    if ([self containsString:@":"]) {
+        if ([self containsString:@"-"]) {
+            fromatString = @"yyyy-MM-dd HH:mm:ss";
+        }else if([self containsString:@"/"]) {
+            fromatString = @"yyyy/MM/dd HH:mm:ss";
+        }else if([self containsString:@"年"]){
+            fromatString = @"yyyy年MM月dd日HH:mm:ss";
+        }else if(self.length > 8) {
+            fromatString = @"yyyyMMddHHmmss";
+        }else if(self.length == 8){//没有年
+            fromatString = @"HH:mm:ss";
+        }else {
+            fromatString = @"HHmmss";
+        }
+    }else {//没有时间
+        if ([self containsString:@"-"]) {
+            fromatString = @"yyyy-MM-dd";
+        }else if([self containsString:@"/"]) {
+            fromatString = @"yyyy/MM/dd";
+        }else if([self containsString:@"年"]){
+            fromatString = @"yyyy年MM月dd日";
+        }else {
+            fromatString = @"yyyyMMdd";
+        }
+    }
+    
+    return [self dateFromStringWithFormatString:fromatString];
+}
+/**
+ *  时间字符串转换成(无时差)NSDate
+ */
+- (NSDate *)dateFromStringWithFormatString:(NSString *)formatString{
+    NSDateFormatter *format = [[NSDateFormatter alloc] init];
+    [format setDateFormat:formatString];
+    //根据格式取得字符串的date
+    NSDate *fromDate = [format dateFromString:self];
+    //转换时区
+    NSInteger fromInterval = [[self class] zoneFromDate:fromDate];
+    //取得转换时区后的date
+    NSDate *toDate = [fromDate dateByAddingTimeInterval:fromInterval];
+    return toDate;
+}
+/**
+ *  距离字符串中的时间经过了或者还剩多少天
+ */
+- (NSInteger)dayFromStringWithFormatString:(NSString *)formatString{
+    //取得字符串的date
+    NSDate *fromDate = [self dateFromStringWithFormatString:formatString];
+    
+    //取得当前时间的date
+    NSDate *nowDate = [NSDate date];
+    //转换时区
+    NSInteger interval = [[self class] zoneFromDate:nowDate];
+    //取得转换时区后的date
+    NSDate *localeDate = [nowDate dateByAddingTimeInterval:interval];
+    
+    //进行日期比较
+    NSCalendar *gregorian = [[NSCalendar alloc]initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSUInteger unitFlags = NSCalendarUnitDay;//返回的类型，只返回天
+    NSDateComponents *components = [gregorian components:unitFlags fromDate:fromDate toDate:localeDate options:NSCalendarWrapComponents];
+    
+    return [components day];
+}
 
 @end

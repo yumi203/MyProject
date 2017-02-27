@@ -54,4 +54,12 @@
  *  @return 时间成分对象
  */
 +(NSDateComponents *)dateComponents:(NSCalendarUnit)unit fromDate:(NSDate *)fromDate toDate:(NSDate *)toDate;
+/**
+ *  将date转换成字符串(将有/无时差的date转换成字符串)
+ *  @param formatString 格式
+ *  @param difference   是否有时间差 YES有时差/NO无时差
+ *  默认为YES有时差
+ */
+- (NSString *)timeStringFormatString:(NSString *)formatString
+                      timeDifference:(BOOL)difference;
 @end
